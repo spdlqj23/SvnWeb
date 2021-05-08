@@ -39,7 +39,6 @@ public class SvnRouter {
             synchronized (logList) {
                 page = "1";
                 List<SVNLogEntry> logEntries = SvnService.getLogEntry(startDate, endDate);
-//                List<SVNLogEntry> logEntries = SvnService.getTestLogEntry(3);
                 List<SVNLogEntry> filteredEntry = logEntries.stream()
                         .filter(s -> {
                             if(StringUtils.isNotBlank(author)) {

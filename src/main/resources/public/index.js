@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    document.getElementById('searchForm').addEventListener('keydown', (event) => {
+        if(event.key === 'Enter') {
+            asyncSvn();
+        }
+    });
+
     window.addEventListener('popstate', (event) => {
         let state = event.state;
         if(state.data) {
@@ -84,11 +90,20 @@ async function fetchSvnData(url) {
         url += `?${params.slice(0, params.length - 1)}`;
     }
 
-    return fetch(url, {
+    let classList = document.getElementById('spinner').classList;
+    let show = setTimeout(function(){
+        classList.remove('is-hidden');
+    }, 1000);
+
+    let data = await fetch(url, {
         headers: {
             'Accept': 'application/json'
         }
     });
+    clearTimeout(show);
+    classList.add('is-hidden');
+
+    return data;
 }
 
 // promise

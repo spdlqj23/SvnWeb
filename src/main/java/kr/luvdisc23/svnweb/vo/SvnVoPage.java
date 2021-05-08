@@ -89,7 +89,11 @@ public class SvnVoPage {
 
             if(totalPage <= pagingSize) {
                 for(int i = 1; i <= totalPage; i++) {
-                    pageList.add(new Page(url, i) );
+                    Page page = new Page(url, i);
+                    if(i == currentPage){
+                        page.setCurrent(true);
+                    }
+                    pageList.add(page);
                 }
             }else {
                 long middlePoint = pagingSize / 2;
