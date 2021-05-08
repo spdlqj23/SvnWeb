@@ -1,0 +1,19 @@
+{{#svnVo}}
+    <tr>
+        <td>{{number}}</td>
+        <td><p>{{date}}</p></td>
+        <td><p>{{revision}}</p></td>
+        <td><p>{{author}}</p></td>
+        <td><p>{{message}}</p></td>
+        <td>
+            {{#files}}
+                {{.}}</br>
+            {{/files}}
+        </td>
+    </tr>
+{{/svnVo}}
+{{^svnVo}}
+    <tr>
+        <td colspan="6"><div class="has-text-weight-semibold has-text-centered">No Data Found</div></td>
+    </tr>
+{{/svnVo}}
