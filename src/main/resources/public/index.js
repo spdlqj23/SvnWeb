@@ -63,7 +63,7 @@ async function asyncSvn(page) {
 
 async function renderData(json) {
     async function fetchToText(url) {
-        const res = await fetch(url)
+        const res = await fetch(url);
         return res.text();
     }
 

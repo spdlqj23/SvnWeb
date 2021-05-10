@@ -125,7 +125,7 @@ public class SvnVoPage {
                     }
 
                 }else if(range.contains(start)) {
-                    for (long i = totalPage - pagingSize; i <= totalPage; i++) {
+                    for (long i = totalPage - pagingSize + 1; i <= totalPage; i++) {
                         Page page = new Page(url, i);
                         if(i == currentPage){
                             page.setCurrent(true);
@@ -133,11 +133,11 @@ public class SvnVoPage {
                         pageList.add(page);
                     }
 
-                    if(totalPage - pagingSize > 2) {
+                    if(totalPage - pagingSize + 1 > 2) {
                         first = new Page(url, 1);
-                        prev = new Page(url, totalPage - pagingSize - 1);
-                    }else if(totalPage - pagingSize == 2){
-                        prev = new Page(url, totalPage - pagingSize - 1);
+                        prev = new Page(url, totalPage - pagingSize);
+                    }else if(totalPage - pagingSize + 1 == 2){
+                        prev = new Page(url, totalPage - pagingSize);
                     }
                 }else if(range.contains(end)) {
                     for (long i = 1; i <= pagingSize; i++) {

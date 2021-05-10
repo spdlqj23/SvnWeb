@@ -23,7 +23,7 @@ public class SvnRouter {
     private static final String svnFilePathReplace = "svn.file.path.replace";
     private static final ArrayList<SVNLogEntry> logList = new ArrayList<>();
 
-    public static void handle(@NotNull Context context) throws Exception {
+    public static void handle(@NotNull Context context) {
         String author = context.req.getParameter("author");
         String file   = context.req.getParameter("file");
         String startDate  = context.req.getParameter("startDate");
@@ -42,18 +42,13 @@ public class SvnRouter {
                 List<SVNLogEntry> filteredEntry = logEntries.stream()
                         .filter(s -> {
                             if(StringUtils.isNotBlank(author)) {
-                                if(StringUtils.containsIgnoreCase(s.getAuthor(),author)) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
+                                return StringUtils.containsIgnoreCase(s.getAuthor(), author);
                             } else {
                                 return true;
                             }
                         })
                         .filter(s -> {
                             if(StringUtils.isNotBlank(file)){
-                                boolean isContain = false;
                                 for(SVNLogEntryPath svnLogPath: s.getChangedPaths().values()) {
                                     String path = svnLogPath.getPath().replace(PropertyService.get(svnFilePathReplace), "");
                                     if(StringUtils.containsIgnoreCase(path,file)) {
