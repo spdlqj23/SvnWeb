@@ -1,17 +1,9 @@
 {{#pagingVo}}
-    {{#first}}
-        <li><a class="pagination-link" aria-label="Goto page {{page}}" arial-page="{{page}}">&lt;&lt;</a></li>
-    {{/first}}
-    {{#prev}}
-        <li><a class="pagination-link" aria-label="Goto page {{page}}" arial-page="{{page}}">&lt;</a></li>
-    {{/prev}}
+    <li><a class="pagination-link" aria-label="Goto page {{page}}" arial-page="{{first.page}}" {{^first}}disabled{{/first}}>&lt;&lt;</a></li>
+    <li><a class="pagination-link" aria-label="Goto page {{page}}" arial-page="{{prev.page}}" {{^prev}}disabled{{/prev}}>&lt;</a></li>
     {{#pageList}}
         <li><a class="pagination-link {{#current}}is-current{{/current}}" aria-label="Goto page {{page}}" {{#current}}aria-current="page"{{/current}} arial-page="{{page}}">{{page}}</a></li>
     {{/pageList}}
-    {{#next}}
-        <li><a class="pagination-link" aria-label="Goto page {{page}}" arial-page="{{page}}">&gt;</a></li>
-    {{/next}}
-    {{#last}}
-        <li><a class="pagination-link" aria-label="Goto page {{page}}" arial-page="{{page}}">&gt;&gt;</a></li>
-    {{/last}}
+    <li><a class="pagination-link" aria-label="Goto page {{page}}" arial-page="{{next.page}}" {{^next}}disabled{{/next}}>&gt;</a></li>
+    <li><a class="pagination-link" aria-label="Goto page {{page}}" arial-page="{{last.page}}" {{^last}}disabled{{/last}}>&gt;&gt;</a></li>
 {{/pagingVo}}

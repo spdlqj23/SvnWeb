@@ -57,6 +57,5 @@
             <artifactId>joda-time</artifactId>
             <version>${joda.version}</version>
         </dependency>
-
     </dependencies>
 </project>
